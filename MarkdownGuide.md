@@ -195,44 +195,12 @@ You can also emphasize links:
 > **[Example](./AnotherMarkdown.md "And a title")**
 >
 > *[Example](./AnotherMarkdown.md "And a another title")*
-
-### ***Appendix*** | Reference-style links
-Reference-style links consists of two parts:
-1. The text you put inline which you can see when it renders to HTML
-2. The *reference link* at some other place of the Markdown file
-```
-I will give you a [link][1], and its reference link somewhere else, for example, just below this paragraph
-
-[1]: (https://example.com "example")
-```
-
-> I will give you a [link][1], and its reference link somewhere else, for example, just below this paragraph
-> 
-[1]: (https://example.com "example")
-
-You can also write your reference link this way:
-```
-[link][a]
-[link] [A]
-[link][A]
-
-[a]: (https://example.com "example")
-[link]: [https://example.com "example"]
-```
-> [link][a]
->
-> [link] [A]
->
-> [link][A]
-
-[a]: (https://example.com "example")
-[link]: [https://example.com "example"]
 ## 1.9 Images
 ```
 ![alt text, displays when the image dose not exist](./images/sample.jpg "title, text appears when you hover you cursor above the image")
 ```
 ## 1.10 Escaping characters
-Use a back slash to escape special characters.  
+Use a backslash to escape special characters.  
 Characters you can escape:
 | Character | Name         | Character | Name       |
 | :-------: | ------------ | :-------: | --------- |
@@ -280,7 +248,6 @@ Result:
 You can add **emphasis**, **inline code** (Not code blocks), **links** into your table.
 
 ***But*** you can not add **headings**, **lists**, **horizontal rules**, **images**, or **HTML tags**.
-
 ## 2.2 Fenced code blocks
 As mentioned earlier in this guide, you can enclose your *code blocks* with treble ticks (\`\`\`). In addition, you can also enclose your *code blocks* with treble tilde (~~~).
 ### Syntax Highlighting
@@ -304,59 +271,23 @@ Result:
 ```
 ## 2.3 Footnotes
 ```
-Here's a simple footnote[^1], and here's a longer one[^bignote].
+Here's a simple footnote[^1], and here's a longer one[^another].
 
 [^1]: This is the first footnote.
-[^bignote]: Here's one with multiple paragraphs and code, but not be supported on all markdown applications.
-    Indent paragraphs to include them in the footnote.
-    
-    `{ my_ code }`
-
-    Add as many paragraphs as you like.
+[^another]: Here's another footnote
 ```
 You can put your footnotes anywhere in the file, and the result is that the footnotes will always appears at the end of the document.
 
 Result:
-Here's a simple footnote[^1], and here's a longer one[^bignote].
+> Here's a simple footnote[^1], and here's another one[^bignote].
 
 [^1]: This is the first footnote.
-[^bignote]: Here's one with multiple paragraphs and code, but not be supported on all markdown applications.
-    Indent paragraphs to include them in the footnote.
-   
-   `{ my_ code }`
-
-   Add as many paragraphs as you like.
-
-## 2.4  Definition lists
-~~~
-First term
-: This is the definition of the first item
-
-Second term
-: This is one definition of the second term
-: This is another definition of the second term
-~~~
-First term
-: This is the definition of the first item
-
-Second term
-: This is one definition of the second term
-: This is another definition of the second termesult:
-## 2.5 Task lists
-```
-- [x]First task
-- [ ]Second task
-- [ ]Third task
-```
-R
-- [x]First task
-- [ ]Second task
-- [ ]Third taskesult:
-## 2.6 Strikethrough
+[^bignote]: Here's another footnote.
+## 2.4 Strikethrough
 ```
 The world is ~~flat~~ round.
 ```
 Result:
 > The world is ~~flat~~ round.
-## 2.7 Automatic URL linking
+## 2.5 Automatic URL linking
 Many markdown processors automatically turn URLs into links, although didn't enclose them in parentheses. If you don't want your URLs automatically render to links, you can render them as inline code.
