@@ -291,3 +291,16 @@ Result:
 > The world is ~~flat~~ round.
 ## 2.5 Automatic URL linking
 Many markdown processors automatically turn URLs into links, although didn't enclose them in parentheses. If you don't want your URLs automatically render to links, you can render them as inline code.
+## 2.6 Heading IDs
+```
+### Great Heading {#great-heading}
+```
+Linking to headings:
+
+```
+[GH](#great-heading "Great Heading")
+```
+Result:
+> ### Great Heading {#great-heading}
+
+> [GH](#great-heading "Great Heading")
