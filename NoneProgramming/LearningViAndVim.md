@@ -185,6 +185,8 @@ You can open a *vi* or *vim* session with options. For example, `vi -R file` wil
     You can continue search for *pattern* when the file is opened  
     If there's spaces in the *pattern*, should enclose the *whole pattern* with single
     or double quotes (`'` or `"`), or *escape* spaces with backslashes (`\`)
+- `+n`: open *file* at line *n* (traditional *vi* session)
+- `+/pattern`: open *file* at the first occurance of *pattern* (traditional *vi* session
 - `+`: open *file* at last line
 
 If `wrapscan` is disabled, you might not be able to use `-c /pattern`. If you try to open
@@ -243,3 +245,60 @@ The *numbered* and *named* registers are shared within the same *Vim* session.
 - `''`: return to the beginning of the line of the previous mark or context
 
 Place markers are set only during the current session, they are not stored in the file.
+
+## 5 Introducing the `ex` editor
+> A file is a sequence of numbered lines.
+### 5.1 `ex` commands
+Opening a file with `ex`:
+```shell
+$ ex file
+"file" 4L, 235
+Entering Ex mode. Type "visual" to go to Normal mode.
+:
+```
+
+The last colon (`:`) indicates the `ex` prompt, you can input your command after it.
+
+`ex` commands consists of **a line address** plus a **command**, they are finished by
+hitting `ENTER`.
+
+- `2p`: print out the 2nd line and set the 2nd line as the current line  
+    *You can ommit `p`, `ex` will still print out the scond line*
+- `1,3`: print out 1st line to 3rd line and set the 3rd line as the current line
+- `p`: print out the current line  
+    *commands without line address are aplied to the current line*
+- `vi`: get to *vi*
+
+To invoke `ex` commands, start with a colon (`:`) in *command mode*, a `Q` in command
+mode of *vi* or *Vim* invoke `ex`.
+### 5.2 Editing with `ex`
+Introducing some `ex` commands
+| Full command | Abbreviation | Description |
+| ---          | ---          | ---         |
+| delete       | d            | delete lines |
+| move         | m            | move lines |
+| copy         | co / t       | copy lines |
+
+*You can use full commands or their abbreviation, the results are same*
+
+You can seperate **line address patterns** and **commands** with spaces for beter
+readability.
+#### 5.2.1 Line addresses
+You can specify line addresses in several ways:
+- with explicite line **numbers**
+- with **symbols** that help you specify line numbers relative to your current position
+- with **search** patterns
+#### 5.2.2 Defining a range of lines
+Addresses use explicite numbers are called *absolute* line addresses
+- `3,18d`: delete line 3 through line 18
+- `2,23m0`: move line 2 through line 23 to the top of the file
+- `3,34co48`: copy line 3 through line 34 to line 48
+- `=`: print the total number of lines
+- `.=`: print the line number of the current line
+- `/pattern/=`: print the line number of the next occurrent of *pattern*
+#### 5.2.3 Line addressing symbols
+- `.`: current line
+- `$`: last line in the file
+- `%`: all the lines in the file
+- `/pattern/+3`: 3rd line under the line contains the next occurrence of *pattern*
+- `.-2`: 2nd line above the current line
