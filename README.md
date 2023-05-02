@@ -1,15 +1,17 @@
-# Notes of programming and computer topics
-## Systematic learning
- - [Head First HTML5 Programming](./HeadFirstHTML5.md)
- - [Git Tutorial](./GitTutorial.md)
- - [Django For Beginners](./DjangoForBeginners.md)
-## Other arbitory topics
-### Quick references
- - [Git Tutorial](./GitTutorial.md)
- - [Markdown Guide](./MarkdownGuide.md)
- - [Boot menue hot keys of mainstream brands](./BootEntryListHotKey.html)
-### How-Tos
- - [How to Configure Grub](./How%20to%20configure%20grub.md)
- - [How to Install Gnome Extensions Manually](./How%20to%20install%20gnome%20extensions%20manully.md)
- - [How to set up Kali Live bootable USB](./KaliLiveSetUp.md)
- - [How to customize bash prompt](./HowToCustomizeBashPrompt.md)
+# Programming Languages
+[Django For Beginners](./ProgrammingLanguages/DjangoForBeginners.md)
+[Head First HTML5](./ProgrammingLanguages/HeadFirstHTML5.md)
+# None Programming
+[Markdown Quick Guide](./NoneProgramming/MarkdownQuickGuide.md)
+[Learning the vi and Vim Editer](./NoneProgramming/LearningViAndVim.md)
+# Linux
+[Kali Live Setup Guide](./Linux/KaliLiveSetUp.md)
+# HowTos
+[How to Configure Grub](./HowTos/HowToConfigureGrub.md)
+[How to Customize Bash Prompt](./HowTos/HowToCustomizeBashPrompt.md)
+[How to Customize Vim](./HowTos/HowToCustomizeVim.md)
+[How to Install Gnome Extensions mannually](./HowTos/HowToInstallGnomeExtensionsManually.md)
+# Others
+[Git Tutorial](./others/GitTutorial.md)
+[Boot Entry List Hotkeys](./others/BootEntryListHotKey.html)
+[HTML Character Entities](./others/HTMLCharacterEntities.html)

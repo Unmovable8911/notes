@@ -72,8 +72,7 @@ Some *number*, *command* combinations you may not expect:
 by *text object*.
 
 Some *commands* don't require *text object*. For example, `r`, `i`, `~`, etc. But you can
-combine them with *numbers* to repeat the command multiple times by prefixing a *number*
-before them .
+combine them with *numbers* to repeat the command multiple times by prefixing a *number*.
 ### Settings
 - `wrapmargin` or `wm` option can automatically wrap a line when its length reaches the
     value you specified.Usage:  
@@ -341,4 +340,34 @@ command which saves the buffer and quit, equal to `:wq`.
 `:.,++ w >> new_file` appends the current line and the following two line to *new_file*.
 #### 5.3.4 Copying a file into another file
 `:3r file` ~~reads~~copys contents in *file* and past it after the line after line 3.
-### 5.4 Editing multiple lines
+### 5.4 Editing multiple files
+`vim file1 file2` opens *file1* and *file2* into the same session, After you have
+finished editing the first file, you can `:w` write the file, and `:n` call the next file
+#### 5.4.1 Using argument list
+`:args` or `:ar` lists the files named **on the command line**, with the current file
+enclosed in brackets.  
+*vi*'s `:rewind` or `:rew` resets the current file to be the first file named on the
+command line.  
+*Vim* provides `:last` to move to the last file, and `:prev` to go back to the previous
+file.
+#### 5.4.2 Calling in new files
+If you want to edit another file, save the current file, and use `:e another` takes you
+to file *another*, where *another* is the other file you want to edit.
+#### 5.4.3 Filename shortcuts
+You can use `%` as a shorcut to refer to the current file name, and `#` refers to the
+alternate file name.
+- `:+3r#`: reads the content of the *alternate file* and past it after the line 3 line
+    below the current line.
+- `:w new_%`: if your current editing filename is practice, this command saves the
+    buffer as *new_practice*
+
+#### 5.4.4 Switching files from command mode
+`CTRL-^` in *vi* is equal to `:e #` in *ex*
+#### 5.4.5 Edits between files
+In addition to *vi* commands `"<letter><command>`, *ex* also provides `:ya` (yank) and
+`:pu` (put) which allow you to copy and past contents between files. Note that they are
+used with *ex*'s line\-addressing capability and named registers.
+- `:160,224ya a: yanks line 160 through line 224 into register `a`
+- `:pu a`: put register `a` after current line
+
+## 6 Global replacement
