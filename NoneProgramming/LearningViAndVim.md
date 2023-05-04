@@ -367,7 +367,120 @@ alternate file name.
 In addition to *vi* commands `"<letter><command>`, *ex* also provides `:ya` (yank) and
 `:pu` (put) which allow you to copy and past contents between files. Note that they are
 used with *ex*'s line\-addressing capability and named registers.
-- `:160,224ya a: yanks line 160 through line 224 into register `a`
+- `:160,224ya a`: yanks line 160 through line 224 into register `a`
 - `:pu a`: put register `a` after current line
 
 ## 6 Global replacement
+Global replacement really uses two *ex* commands: `:g` (global) and `:s` (substitute).
+
+### 6.1 The substitute command
+The basic substitute command syntax: 
+
+```
+:s/old/new/
+```
+
+The `/` is the delimiter between parts of the *substitute command* and is optional when it
+is the last character on the line.
+
+`:s/old/new/g` substitutes all occurrences of `old` with `new` on a **line** (Don't
+confuse the `g` option of `:s` command with `:g` command).
+
+`:50,100s/old/new/g` substitutes all occurrences of `old` with `new` between line 50 to
+line 100.
+
+`:1,$s/old/new/g` and `:%s/old/new/g` substitutes all occurrences of `old` with `new` in
+the entire file.
+
+### 6.2 Confirming substitutions
+Add a `c` option at end of substitute command gives you privilege to confirm each
+substitution.
+
+```
+:%s/old/new/gc
+```
+
+Options in confirmation prompt:
+- `y`:       substitute this match
+- `n`:       skip this match
+- `a`:       substitute this and all the following matches
+- `q`:       quit substitution
+- `l`:       substitute this match and quit (last)
+- `CTRL-E`:  scroll the screen up
+- `CTRL-Y`:  scroll the screen down
+- `ESC`:     quit substitution
+
+### 6.3 Doing things globally
+General pattern of `:g` command:
+
+```
+:g/pattern/ command
+```
+
+Find all lines contain *pattern* and apply *command* to these lines.
+
+### 6.4 Context-sensitive replacement
+Context-sensitive actually means combine `:g` and `:s`, the general pattern of
+context-sensitive replacement is as follow:
+
+```
+:g/pattern/s/old/new/g
+```
+
+First find and register all lines contain *pattern* and then replace all occurrences of
+`old` with `new` in those lines
+
+### 6.5 Pattern-matching rules
+*vi* allows you to match *patterns* with not only fixed strings of characters, but also
+variable patterns of words, which refered to as **regular expressions**. *Regular
+expressions* are made up by combining *normal characters* with a number of special
+chracters called *metacharacters*.
+#### 6,5.1 Metacharacters used in search patterns
+- `.`: any **single** character except a new line
+- `*`: any number of (includes zero) the preceeding **one** character
+- `^`: used at the **beginning** of a regular expression, indicates that the pattern
+  should be found at the **beginning** of a **line**
+- `$`: used at the **end** of a regular expression, indicates that the pattern should be
+  found at the **end** of a **line** 
+  > both `^` and `$` behaves as *normal* characters when they are placed in the middle of
+  a regular expression
+- `[]`: match any **one** of the character enclosed between brackets, you should not
+  seperate each characters with any special characters, just list them as a string of
+  characters, for example, `[d;', ]` lists `d`, `;`, `'`, `,`, and ` ` to choose from.  
+  you can specify a range of consecutive characters by separating the first and last
+  character in the range with a hyphen (`-`). for example, `[2-6]` lists all numbers
+  between 2 and 6, `[b-z]` lists all lowercase letters between b and z  
+  `\`, `-`, and `]` have special meaning inside brackets, you need to escape them if you
+  want to refer to these actual characters  
+  `^` has special meaning only when it's the **first** character inside brackets which
+  reverses the sense, wit match any **one** character *not* in the list
+- `\( \)`: save the subpattern enclosed between `\(` and `\)` into *hold buffer*, up
+  to **9** subpatterns can be saved on a **single line**  
+  you can later refer to the saved subpatterns with `\n` (where `n` is a number), `n` is
+  related to the order in which the subpattern is created from left to right. the first
+  subpattern can be accessed with `\1`, the second is `\2`, and so on
+- `\<` and `\>`: match characters at the *beginning* (`\<`) or at the *end* (`\>`) of a
+  **word**
+
+#### 6.5.2 POSIX bracket expressions
+Groups of characters within brackets are called <u style="italic">bracket expressions</u>
+in the POSIX standard. Additional components provided by POSIX standard:
+
+- *character classes*: consists of keywords bracketed by `[:` and `:]`
+    - `[:alnum:]`: alphanumeric characters
+    - `[:alpha:]`: alphabetic characters
+    - `[:blank:]`: spaces and tab characters only
+    - `[:cntrl:]`: control characters
+    - `[:digit:]`: numbers
+    - `[:graph:]`: printable and visible (nonespace) characters
+    - `[:lower:]`: lowercase letters
+    - `[:print:]`: printable characters (includes whitespaces)
+    - `[:punct:]`: punctuation characters
+    - `[:space:]`: all whitespace characters (space, tab, newline, vertical tab, etc)
+    - `[:upper:]`: uppercase letters
+    - `[:xdigit:]`: hexdecimal digits
+- *callating symbols*: a multicharacter sequence that should be treated as a unit,
+  bracketed by `[.` and `.]`
+- *equivalence classes*: lists a set of characters that should be considered equivalent in
+  a particualar locale, for example, `[[=e=]]` might match any of `e`, `è`, or `é` in
+  French locale
