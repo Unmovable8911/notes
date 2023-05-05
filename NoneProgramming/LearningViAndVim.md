@@ -463,8 +463,8 @@ chracters called *metacharacters*.
   **word**
 
 #### 6.5.2 POSIX bracket expressions
-Groups of characters within brackets are called <u style="italic">bracket expressions</u>
-in the POSIX standard. Additional components provided by POSIX standard:
+Groups of characters within brackets are called *<u>bracket expressions</u>* in the POSIX
+standard. Additional components provided by POSIX standard:
 
 - *character classes*: consists of keywords bracketed by `[:` and `:]`
     - `[:alnum:]`: alphanumeric characters
@@ -484,3 +484,32 @@ in the POSIX standard. Additional components provided by POSIX standard:
 - *equivalence classes*: lists a set of characters that should be considered equivalent in
   a particualar locale, for example, `[[=e=]]` might match any of `e`, `è`, or `é` in
   French locale
+
+All three constructs must appear inside the squre brackets of a bracket expression, that
+is to say, they are considered as an individual unit in a bracket expression.
+
+#### 6.5.3 Metacharacters in replacement strings
+The metacharacters discussed earlier carry out their special meaning only within the
+**search** pattern. For replacement pattern, there are some different metacharacters
+behaves differently:
+
+- `\n`: replace the `\n` with the text matching the *nth* subpattern previously saved by
+  `\(` and `\)`
+- `\`: escape the following special character
+- `&`: the entire text matched by search pattern
+- `~`: replacement text specified in the *last* substitute command
+- `\u` and `\l`: changes the following letter to uppercase or lowercase
+- `\U`, `\L`, `\e`, and `\E`: change all letters up to `\e` or `\E` change into uppercase
+  or lowercase letters
+
+#### 6.5.4 More substitution tricks
+`:s` = `:&` = `:s//~/` = `&`, these four commands all reapeat the last substitution.
+
+`~` also repeats the last substitution, but the search pattern used is the last regular
+expression used in *any* comman.
+
+Besides slashes (`/`), you may use any *nonealphanumeric*, *nonespace* character as your
+delimiter, except `\`, `"`, and `|`.
+
+
+> `:set textwidth=80`, 
