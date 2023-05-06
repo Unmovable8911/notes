@@ -107,3 +107,22 @@ after `STATIC_URL`
 ```
 STATICFILES_DIRS = [BASE_DIR / 'static']
 ```
+
+# 7 User Accounts
+At time you create a new Django project, Django automatically installs the
+`auth` app, which provides a *user object* containing: *username*, *password*,
+*email*, *first_name*, and *last_name*.
+
+## 7,1 Log In
+You don't need to write a view for login page, Django's *auth* app already
+prepared the view for you, but you still need to include the url patterns in
+you `urls.py` in `django_project
+
+```python
+urlpatterns = [
+    path('accounts/', include('django.contrib.auth.urls')),
+]
+```
+
+By default, Django will look within a templates directory called `registration`
+for a file called `login.html` for a login form.

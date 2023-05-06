@@ -511,5 +511,52 @@ expression used in *any* comman.
 Besides slashes (`/`), you may use any *nonealphanumeric*, *nonespace* character as your
 delimiter, except `\`, `"`, and `|`.
 
+### 6.6 Pattern-matching examples
+Suppose you want to substitute the word *child* with *children* in a large file. Here's
+some commands that can achieve your goal, each command gets more specific, accurate than
+the previous one.
 
-> `:set textwidth=80`, 
+```
+:%s;child;children;g
+```
+
+This command may affect words like *childish*, *children*, and gives you some unexpected
+results
+
+```
+:%s/child /children /g
+```
+
+With this command, *childish* and *children* will not be affected, but *child* followed by
+punctuations will not be substituted
+
+```
+:%s/child\([ [:punct:]]\)/children\1/g
+```
+
+This would solve the problem, but the command is too lengthy. And what if you are editing
+a program code, and the word *child* is in the middle of a variabl name, you may not want
+to change the variable name.
+
+Here's the final command that is apter for this situation:
+
+```
+:%s/\<child\>/children/g
+```
+
+or you can make it even simpler:
+
+```
+:%s/\<child\>/&ren/g
+```
+
+#### More examples
+```
+:g/\(mg[ira]\)box/ s//\1sqare/g
+
+:g/pattern1/ .,/pattern2/- m /pattern3/+
+
+:%s/^[1-9][0-9]*\.[1-9][0-9.]* //
+```
+
+> `:set textwidth=90`, 
