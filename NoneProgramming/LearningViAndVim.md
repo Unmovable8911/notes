@@ -559,4 +559,93 @@ or you can make it even simpler:
 :%s/^[1-9][0-9]*\.[1-9][0-9.]* //
 ```
 
+### 6.7 A final look at pattern matching
+The pattern `.*` matches as many characters as posible. For example, in the text:
+
+```
+The greatest of times; the worst of times: moving
+```
+
+This command: `:s/ .* of/ best of/` will result: `The best of times: moving` instead of
+`The best of times; the worst of times: moving`.
+
+When using patterns to match certain text, it's better to work toward refining the
+metacharacters, rather than using specific text.
+
+Sometimes specifying exactly what you want is more difficult than specifying what you
+don't want.
+
+`[^,]*`: until the next comma (any number of any character other than a comma)
+
+```
+:1,10g/^/ 12,17t$
+```
+
+Appends 10 copies of line 12 through line 17 to the end of the file. The `:g` command
+selects line 1, excutes the `:t` command, and then goes to line 2 and excutes the `:t`
+command again, and so on. When line 10 is reached, `ex` will have made 10 copies.
+
+```
+Part 2
+Capability Reference
+.LP
+Chapter 6
+Introduction to the Capabilities
+This and the next three chapers ...
+
+
+
+
+:/^Part 2/,/^Part 3/ g/Chapter/ .+2w >> begain | +t$
+```
+
+For *Part 2*, copy all the first lines of each chapter to a file named *begain*, and then
+copy all the titles of each chapter and append them to the end of the current file. 
+
+## 7 Advanced editing
+### 7.1 Customizing *vi* and *Vim*
+You can change the *vi* or *Vim* behavior from within the editor or in a *.exrc* file in
+your home directory by using the *ex* command `:set`.
+#### 7.1.1 The `:set` command
+There are two types of options that can be changed with the `:set` command:
+
+- Toggle options
+- Options that take a **numeric** or **string** value
+
+Many options have both *complete names* and *abbreviations*, both have the same effect.
+
+To enable or disable toggle options:
+
+```
+# Enable
+:set option
+# Disable
+:set nooption
+# Toggle
+:set option!
+```
+
+More usage of `:set`:
+
+```
+# Display the complete list of options
+:set all
+# Display only the options which user has specifically changed
+:set
+# Show the current value of any individual option
+:set option?
+# Set the value of an option
+:set option=value
+```
+
+#### 7.1.2 The `.exrc` file
+The `.exrc` file controls your *ex*, *vi*, and *Vim* editing environment, put this file in
+your home directory. You can edit this file just as how to edit any other text files.
+After you have edited the file, you can restart *vi* or use `:source` command to make the
+changes take effect.
+
+You don't need to preceed the commands in your `.exrc` file with a *ex* prompt `:`.
+
+#### 7.1.3 
+
 > `:set textwidth=90`, 
