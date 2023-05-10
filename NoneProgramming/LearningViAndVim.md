@@ -646,6 +646,99 @@ changes take effect.
 
 You don't need to preceed the commands in your `.exrc` file with a *ex* prompt `:`.
 
-#### 7.1.3 
+#### 7.1.3 Alternate environments
+You can create a `.exrc` file in the directory of your editing files. Settings in this
+`.exrc` file will only affect the editing environment in the current directory. But you
+have to set the `exrc` option in the `.exrc` file in your home directory (`:set exrc`).
 
-> `:set textwidth=90`, 
+You can also define alternate editing environment by saving option settings in a file
+other than `.exrc` and reading in that file with the `:so` (short for `:source`) command.
+
+#### 7.1.4 Some useful options
+##### Options take values
+- `wrapmargin` (`wm`): specifies the size of the right margin that is used to auto wrap
+  text as you type. A typical value is 7 to 15.
+- `textwidth`: specifies the length of a line and automatically wrap the line as you type.
+  A typical value is 80.
+- `shiftwidth` (`sw`): define the number of spaces in backward tabs when using the
+  `autoindent` option, and for the `<<` and `>>` commands.
+- `tabstop` (`ts`): number of spaces that a tab indents.
+##### Toggle options
+- `ignorecase`: ignore case in search patterns
+- `wrapscan`: search loop back to the first occurrence when it reaches the last one.
+- `magic`: recognizes wildcard characters when pattern matching.
+- `autoindent`: automatically indent blocks while entering a new line, use with
+  `shiftwidth` option.
+- `expandtab`: render tabs into spaces
+- `list`: print tabs as `^I`; mark ends of lines with `$`.
+- `number` (`nu`): display the line number.
+- `showmatch` (`sm`): when ) or } is entered, move the cursor briefly to the matching ( or
+  {. (if no match, ring the error message bell)
+- `autowrite`: automatically write the buffer when you issue the command `:n` and before
+  running a shell command with `:!`.
+
+For a brief description of each option, refer to *Appendix B* in *Learning the vi And the
+Vim Editor*.
+
+### 7.2 Executing Unix commands
+Prefix the Unix commands with a exclamation mark (!): `:!command`
+
+If you want to give a several Unix commands in a row without returning to the editing
+session, you can create a shell with: `:sh`. Quit the shell with `CTRL-D` or `exitENTER`.
+
+You can combine *ex* commands with Unix commands. For example, `:r !pwd` reads in the
+output of Unix command `pwd`
+
+#### Filtering text through a command
+Note that the sorted output replaces the original text in the buffer.
+##### 1) Fieltering text with *ex*
+```
+:39,90 !sort
+```
+
+Sort line 39 through line 90
+##### 2) Fieltering text with *vi*
+```
+!4jsort
+4!jsort
+```
+
+Sort current and the following 4 lines of text
+
+There are a few obscure behavior of the way *vi* acts when you use this feature:
+- The exclamation mark doesn't appear right away when you enter it. It appears when you
+  enter the keystroke(s) for the text object, but the character(s) you entered to
+  reference the object won't appear.
+- Text blocks must be more than one line. A number may precede either the exclamation mark
+  or the text object to repeat mutiply the text object referenced by the character.
+- Entire lines are affected
+- You can specify the current line by entering a second exclamation mark
+
+### 7.3 Saving commands
+#### 7.3.1 Word abbreviation
+You can define an abbreviation in *vi* and whenever you enter the abbreviation in insert
+mode as a **full word**, the abbreviation expand to the phrase you defined as soon as you
+press a *nonalphanumeric* character (e.g. punctuations), a space, a carriage return, or
+`ESC`.
+
+```
+:ab js JavaScript
+```
+
+TO disable the abbreviation:
+
+```
+:unab js
+```
+
+To list your defined abbreviations:
+
+```
+:ab
+```
+
+Note that the charaters that compose your abbreviation cannot also appear at the end of
+your phrase.
+```
+:set textwidth=90
+```
