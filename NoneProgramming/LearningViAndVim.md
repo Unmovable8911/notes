@@ -739,6 +739,83 @@ To list your defined abbreviations:
 
 Note that the charaters that compose your abbreviation cannot also appear at the end of
 your phrase.
+
+#### 7.3.2 Using the map command
+The `map` command acts a lot like `ab` command except that you define a macro for command
+mode instead of insert mode.
+- `:map x sequence`: define character *x* as a sequence of editing *sequence*
+- `:unmap x`: disable the *sequence* defined for *x*
+- `:map`: list the characters that are currently mapped
+
+Keys *vi* doesn't use: `g`, `K`, `q`, `v`, `V`, `^A`, `^K`, `^O`, `^W`, `^X`, `_`, `*`,
+`\`, and `=`.  
+*Vim* uses all of these characters except for `^K` and `\`
+
+> The `=` is used by *vi* if Lisp mode is set. In many modern versions of *vi*, `_` is
+> equal to `^`. *Vim* has a visual mode that uses `v` and `V`.
+
+You can also map keys that the command mode already uses.
+
+#### 7.3.3 Mapping with a leader
+Defining a map with mapleader:
+
+```
+:map <leader>q :wq
+```
+
+The default key of mapleader is backslash (\\), you can set the mapleader to the key you
+prefer:
+
+```
+:let mapleader="x"
+```
+
+#### 7.3.4 Escaping special keys
+Special keys such as `ENTER`, `ESC`, `BACKSPACE`, and `DELETE` can be escaped when you try
+to type them in insert mode or in a sequence of *ex* command by preceding them with
+`CTRL-V`.  
+In addition, there are 3 control characters that must be escaped with `CTRL-V`: `CTRL-T`,
+`CTRL-W`, and `CTRL-T`.
+
+There's one character always has a special meaning in *ex* commands -- `|`, even if you
+try to escape it with `CTRL-V`. And you cannot use a vertical bar in insert mode maps.
+
+Mapped sequences are allowed to contain other mapped commands, and this ability is
+controled by the `remap` option.
+
+#### 7.3.5 Mapping keys for insert mode
+General syntax:
+- `:map! x sequence`: mapping *x* for command *sequence*
+- `:unmap! x`: unmapping key *x*
+- `:map!`: list mapped keys for insert mode
+
+#### 7.3.6 Mapping function keys
+- `map #1 sequence`: mapping `F1` to the command *sequence* in **command mode**
+- `map! #1 sequence`: mapping `F1` to the command *sequence* in **insert mode**
+
+#### 7.3.7 Mapping other special keys
+You can also map other special keys, such as `HOME`, `END`, `PAGEUP`, `PAGEDOWN`, etc. by
+preceding them with a `CTRL-V`.
+
+***Vim*** provides a portable way to describe special keys by enclosing the key name
+between a pair of angle brackes. For example, `<Home>` representes `HOME`, `<ESC>`
+representes `ESC`. It also provides a shortcut for combination of special keys and
+character, for example, `<C-i>` representes `CTRL-I`, `<A-s>` represents `ALT-S`.
+
+#### 7.3.8 Mapping multiple keys
+You can conbine multiple keys to reference a command sequence. For example, you may find
+`:map! ii <ESC>` very helpful for it saves a lot of strech.
+
+#### 7.3.9 @-Functions
+Named registers provide yet another way to create macros. By saving a line of either *ex*
+command or *vi* command (as text) into a named register, for example register *a*, and you
+can refer to the  command by typing `@a`.
+
+`@@` repeats the last `@`.
+
+*Vim* provides another way to save text into a named regiter. `qatextq` saves *text* into
+register *a*.
+
 ```
 :set textwidth=90
 ```
