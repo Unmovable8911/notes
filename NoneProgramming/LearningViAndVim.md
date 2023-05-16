@@ -874,10 +874,13 @@ the editing commands.
 
 #### 7.4.3 Sorting text blocks
 > `g/^<glossaryitem>/,/^<\/glossaryitem>/-1 s/$/@@/`  *Append `@@` to each line*
+>
 > `g/^<glossaryitem>/,/^<\/glossaryitem>/j`           *Join the entries*
+>
 > `%!sort`                                            *Sort the lines*
-> `%s/@@ /
-/g`                                       *Break the lines apart*
+>
+> `%s/@@ /g`                                       *Break the lines apart*
+>
 > `wq`                                                *Save and quit*
 
 The `j` command in the second command joints two lines together and converts the *newline*
