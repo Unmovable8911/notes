@@ -816,7 +816,7 @@ can refer to the  command by typing `@a`.
 *Vim* provides another way to save text into a named regiter. `qatextq` saves *text* into
 register *a*.
 
-#### 7.3.9 Excuting registers from *ex*
+#### 7.3.10 Excuting registers from *ex*
 You can also use *ex* `:@` command to excute commands saved in registers. For example,
 `:@g` excute the command saved in register `g`.
 
@@ -876,7 +876,8 @@ the editing commands.
 > `g/^<glossaryitem>/,/^<\/glossaryitem>/-1 s/$/@@/`  *Append `@@` to each line*
 > `g/^<glossaryitem>/,/^<\/glossaryitem>/j`           *Join the entries*
 > `%!sort`                                            *Sort the lines*
-> `%s/@@ //g`                                       *Break the lines apart*
+> `%s/@@ /
+/g`                                       *Break the lines apart*
 > `wq`                                                *Save and quit*
 
 The `j` command in the second command joints two lines together and converts the *newline*

@@ -1,17 +1,17 @@
 # Programming Languages
-[Django For Beginners](./ProgrammingLanguages/DjangoForBeginners.md)
-[Head First HTML5](./ProgrammingLanguages/HeadFirstHTML5.md)
+- [Django For Beginners](./ProgrammingLanguages/DjangoForBeginners.md)
+- [Head First HTML5](./ProgrammingLanguages/HeadFirstHTML5.md)
 # None Programming
-[Markdown Quick Guide](./NoneProgramming/MarkdownQuickGuide.md)
-[Learning the vi and Vim Editer](./NoneProgramming/LearningViAndVim.md)
+- [Markdown Quick Guide](./NoneProgramming/MarkdownQuickGuide.md)
+- [Learning the vi and Vim Editer](./NoneProgramming/LearningViAndVim.md)
 # Linux
-[Kali Live Setup Guide](./Linux/KaliLiveSetUp.md)
+- [Kali Live Setup Guide](./Linux/KaliLiveSetUp.md)
 # HowTos
-[How to Configure Grub](./HowTos/HowToConfigureGrub.md)
-[How to Customize Bash Prompt](./HowTos/HowToCustomizeBashPrompt.md)
-[How to Customize Vim](./HowTos/HowToCustomizeVim.md)
-[How to Install Gnome Extensions mannually](./HowTos/HowToInstallGnomeExtensionsManually.md)
+- [How to Configure Grub](./HowTos/HowToConfigureGrub.md)
+- [How to Customize Bash Prompt](./HowTos/HowToCustomizeBashPrompt.md)
+- [How to Customize Vim](./HowTos/HowToCustomizeVim.md)
+- [How to Install Gnome Extensions mannually](./HowTos/HowToInstallGnomeExtensionsManually.md)
 # Others
-[Git Tutorial](./others/GitTutorial.md)
-[Boot Entry List Hotkeys](./others/BootEntryListHotKey.html)
-[HTML Character Entities](./others/HTMLCharacterEntities.html)
+- [Git Tutorial](./others/GitTutorial.md)
+- [Boot Entry List Hotkeys](./others/BootEntryListHotKey.html)
+- [HTML Character Entities](./others/HTMLCharacterEntities.html)
