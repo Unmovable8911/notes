@@ -816,6 +816,119 @@ can refer to the  command by typing `@a`.
 *Vim* provides another way to save text into a named regiter. `qatextq` saves *text* into
 register *a*.
 
+#### 7.3.9 Excuting registers from *ex*
+You can also use *ex* `:@` command to excute commands saved in registers. For example,
+`:@g` excute the command saved in register `g`.
+
+### 7.4 Using *ex* scripts
+```
+$ ex -s document < exscript
+```
+
+Execute the commands in `exscript` to alter `document`. `-s` option suppress the terminal
+message (stands for either "script mode" or "silent mode").
+
+#### 7.4.1 Looping in a shell script
+```shell
+for file in "$@"
+do
+    ex -s "$file" < exscript
+done
+```
+
+`"$@"` represents all arguments given to the *shell script* when invoking it. Quoting the
+expansion of the `file` variable ($file) allows the script to work event when the filename
+have spaces in their names.
+
+```shell
+" Assign variable to a, b, c, and d.
+for variable in a b c d
+
+" Assign variable in turn to the name of each file in which grep finds the string Alcuin.
+" -l prints the filenames whose contents match the pattern, without printing the actual
+" matching lines.
+for variable in $(grep -l "Alcuin" *)
+
+" equal to for variable in "$@"
+for variable
+```
+
+#### 7.4.2 Here documents
+You can include your editing commands (*ex* commands) in the shell script.
+
+```shell
+for file in "$@"
+do
+    ex -s "$file" << end-of-script
+    g/thier/s//their/g
+    g/writeable/s//writable/g
+    wq
+    end-of-script
+done
+```
+
+The string `end-of-script` is entirly arbitrary as long as the editing commands doesn't
+include it, because it can be used by the shell to recognize when *here document* is
+finished. By convention, many users the string `EOF`, or `E_O_F` to indicate the end of
+the editing commands.
+
+#### 7.4.3 Sorting text blocks
+> `g/^<glossaryitem>/,/^<\/glossaryitem>/-1 s/$/@@/`  *Append `@@` to each line*
+> `g/^<glossaryitem>/,/^<\/glossaryitem>/j`           *Join the entries*
+> `%!sort`                                            *Sort the lines*
+> `%s/@@ //g`                                       *Break the lines apart*
+> `wq`                                                *Save and quit*
+
+The `j` command in the second command joints two lines together and converts the *newline*
+into a *space*.
+
+### 7.5 Editing program source code
+#### 7.5.1 Indentation control
+With `autoindent` option enabled, you can type `CTRL-T` at the start of a line gives you a
+level of indentation, and `CTRL-D` to removes a level of indentation in **insert mode**.
+
+`<<` shifts a line left one indentation level and `>>` shifts a line right one indentation
+level. You can also prefix a number with these two commands to indent multiple lines.
+
+It is convenient to have a `shiftwidth` that is the same size as `tabstop`.
+
+`expandtab` converts tabs into a number of spaces based on the value of `tabstop` option.
+And you can use the `expand` utility to convert the already existing tabs into spaces.
+
+`:set list` alters your display so that a tab appears as the control character `^I` and
+an end of line appears as a `$`.
+
+`:5.20l` displays line 5 through 20, showing tab characters and end-of-line characters.
+
+#### 7.5.2 A special search command
+`%` moves the cursor to the corresponding prenthesis or bracket if the cursor is above a
+prenthesis or bracket, if not, *vi* searches forward on the current line to the first
+openning prenthesis or bracket, and then moves the cursor to its matching prenthesis or
+bracket.
+
+*Vim* can highlight the matching prenthesis or bracket using the *matchparen* plug-in,
+which is loaded by default.
+
+#### 7.5.3 Using tags
+With a *tags* file created by *ctags* program, you can determine which files define which
+functions while editing source code.
+
+- `$ ctags *.c` creates a *tags* file describing the C source files in the directory.
+- `:tag name` looks at the *tags* file to find out which file contains the definition of
+  *name*
+- `CTRL-]` performs tag look up for the identifier that is under the cursor, the editor
+  uses the "word" under the cursor starting at the current cursor position, not the entire
+  word containing the cursor.
+- `:tag` displays the tag stack in *Vim*
+
+In *Vim*, each time you look up for a idertifier using `:tag` or `CTRL-]`, the editor
+saves the current location before searching for the *tag*, you may then return to a saved
+location using `CTRL-T`.
+
+---
+
+# Part II *Vim*
+## 8 Overview and improvements over *vi*
 ```
 :set textwidth=90
 ```
