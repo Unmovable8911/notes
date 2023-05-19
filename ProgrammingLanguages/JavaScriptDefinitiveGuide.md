@@ -263,7 +263,37 @@ let iso = now.toISOString();      // Convert to a string in standard format
 ```
 
 ## 3.3 Text
+A string is an immutable ordered sequence of 16-bit values, each of which
+typically represents a Unicode character. The length of a string is the number
+of 16-bit values it contains.
 
+JavaScript uses the UTF-16 encoding. Unicode characters do not fit in 16-bits
+are encoded using the rules of UTF-16 as a sequence  (known as a *surrogate
+pair*) of two 16-bit values.
+
+Most string-manipulation methods defined by JavaScript works on the 16-bit
+value, which means, when they encounter a Unicode character that is represented
+using a *surrogate pair*, they will treat that character as two seperate
+characters.  
+In ES6, however, strings are iterable, and the `for/of` loop or `...` operator
+will iterate the actrual character, not the 16-bit value.
+### 3.3.1 String Literals
+A string literal in JavaScript is enclosed between a pair of single or double
+quotes or backticks (`'`, `"`, or `` ` `` ).
+
+You can break a string literal across multiple lines by ending each line except
+the last with a bachslash (`\`).
+
+```javascript
+// A one-line string written on 3 lines
+"one\
+long\
+line"
+
+// A two line string written on 2 lines
+`the newline character at the end of this line
+is included literally in this string`
+```
 
 ```
 :so ~/Documents/exrc/js_exrc
