@@ -30,6 +30,44 @@ The flags controlling enable and disable mouse function in three modes:
 - vi command mode: `n`
 
 Any combination of flags can be specified in the `mouse` option.
+```
+" Disable all mouse behavior.
+:set mouse=""
+
+" Enable all mouse behavior (default)
+:set mouse=a
+
+" Enable visual mode. Uses the += syntax to add a flag to the current mouse setting.
+:set mouse+=v
+
+" Disable mouse behavior in ex command mode
+:set mouse-=c
+```
+
+Other mouse options: `mousefocus`, `mousehide`, `mousemodel`, `selectmode`. For the detail
+of each option, refer to the Vim built-in help.
+
+Scroll wheel scrolls the window up and down, regardless of the value of `mouse` option.
+
+## 9.2 Customizing Scrollbars, Menus, and Toolbars
+### 9.2.1 Scrollbars
+Toggle the left and right scrollbar by including or excluding `l` and `r` in the
+`guioption` option. `L` and `R` tell gvim to show left or right scrollbars only when there
+is a vertically split window.  
+`b` flag controls horizontal scrollbar.
+
+### 9.2.2 Menus
+In gvim, menu entries are merely wrappers for Vim commands
+
+You can click the dashed line containing a scissor to create a self-standing window of the
+menu.
+
+#### Basic menu customization
+gvim stores menu definitions in a file named `$VIMRUNTIME/menu.vim`.
+
+```
+:amenu File.HTML :set filetype
+```
 
 [Previous](./Chapter-8.md) | [Contents](../Contents.md) | [Next](./Chapter-10.md)
 ```
