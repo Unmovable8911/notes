@@ -325,4 +325,4 @@ In *Vim*, each time you look up for a idertifier using `:tag` or `CTRL-]`, the e
 saves the current location before searching for the *tag*, you may then return to a saved
 location using `CTRL-T`.
 
-[Back to Contents](../Contents.md)
+[Previous](Chapter-6.md) | [Contents](../Contents.md) | [Next](../Part-II/Chapter-8.md)

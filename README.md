@@ -1,6 +1,7 @@
 # Programming Languages
 - [Django For Beginners](./ProgrammingLanguages/DjangoForBeginners.md)
 - [Head First HTML5](./ProgrammingLanguages/HeadFirstHTML5.md)
+- [The JavaScript Definitive Guide](./ProgrammingLanguages/JavaScriptDefinitiveGuide/Contents.md)
 # None Programming
 - [Markdown Quick Guide](./NoneProgramming/MarkdownQuickGuide.md)
 - [Learning the vi and Vim Editer](./NoneProgramming/LearningViAndVim/Contents.md)

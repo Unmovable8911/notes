@@ -1,112 +1,3 @@
-# 1 Introduction to JavaScript
-The official standard name for JavaScript is *ECMAScript* (European Computer
-Manufacturer's Association), or *ES* for short.
-
-There are three *keywords* for defining variables: `let`, `const`, and `var`.
-And they have different *scoping rules* and behavior.
-
-`var` is the original way to declare variables, it has *function scope*.
-
-`let` and `const` were introduced in *ES6*, they have *block scope*. The
-difference between `let` and `const` is that `let` allows you reasign values to
-the variables, while `const` does not.
-
-Some JavaScript syntax examples:
-```javascript
-'2' == 2;            // => true
-'2' === 2;           // => false
-true && true;        // => true
-true && false;       // => false
-true || false;       // => true
-!(3==2);             // => true  ! inverts a boolean value
-
-// one line functions
-const plus1 = x => x + 1;
-const square = x => x * x;
-
-// Arrays
-var a = [1, 2, 3];   // define an array
-a.push(4, 5, 6);     // add elements to array a
-a.revers();          // reverse the order of elements in array a
-```
-
-**Expressions** compute a value but don't alter the program state.  
-**Statements** don't have a value, but alter the state.
-
-#### *var*, *let*, and *const*
-```javascript
-function example() {
-    var a = 1;
-    var b = 2;
-    var c = 3;
-
-    if (true) {
-        var a = 4; // reassigns the value of a to 4
-        let b = 5; // creates a new block-scoped variable b
-        const c = 6; // creates a new block-scoped constant c
-
-        console.log(a, b, c); // output: 4 5 6
-    }
-
-    console.log(a, b, c); // output: 4 2 3
-}
-example();
-```
-
-It's generally recommended to use `let` and `const` instead of `var` in modern
-JavaScript code.
-
----
-# 2 Lexical Structure
-
-JavaScript ignores spaces and **most** line breaks
-
-```javascript
-// This is a single line comment
-/* This is also a comment */ // And here is another comment
-/* 
-This is a multi-lime comment.
-You can expand it to as many line as you like. 
-```
-
-A *literal* is a data value that appears directly in a program.
-
-An *identifier* is simply a name, used to name *constants*, *variables*,
-*classes*, and to provide names for certain *loops*. A JavaScript *identifier*
-must begin with a **letter**, an **underscore**, for a **dollar sign**.
-
-There are some *reserved words* in JavaScript which serve as keywords in
-JavaScript, you should avoid using these words when declaring identifiers.
-
-JavaScript allows *Unicode* letters, digits, and ideographs (except emojis) in
-*identifiers*.
-### 2.5.1 Unicode Escape Sequences
-JavaScript defines escape sequences that allows us to write Unicode characters
-using only ASCII chracters with `\u`. The `\u` is either followed by four
-*hexdecimal* digits, or 1 to 6 *hexdecimal* digits enclosed within braces (this
-braces-enclosed feature was introduced in ES6)
-### 2.5.2 Unicode Normalization
-Unicode allows more than one way of encoding the same character. You can use
-utilities provided by your text editor or other tolls to perform Unicode
-normalization of your code to prevent you from ending up with different but
-visually indisdinguishable identifiers.
-
-## 2.6 Optional Semicolons
-Semicolons in JavaScript works as statement delimilaters, but you can omit the
-semicolon between statements when the two statements are written on seperate
-lines, or the statement is at the end of a program or the next token following
-the statement is a closing brace.
-
-JavaScript treats a line break as a semicolon if the next nonspace character
-cannot be interpreted as a continuation of the current statement.
-
-There are three special occasions when JavaScript cannot parse the socond line
-as a continuation:
-1. The line following a `return`, `throw`, `yield`, `break`, and `continue`.
-2. The line before or after a `++` or `--`.
-3. The line following a `=>` as the prameter of a function.
-
----
 # 3 Types, Values, and Variables
 ## 3.1 Overview and Definitions
 JavaScript data types mainly consists of two types: 
@@ -295,6 +186,8 @@ line"
 is included literally in this string`
 ```
 
+| [Previous](Chapter-2.md) |[Contents](./Contents.md) | [Next](./Chapter-4.md) |
+| --- | --- | --- |
 ```
 :so ~/Documents/exrc/js_exrc
 ```

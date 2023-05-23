@@ -72,4 +72,4 @@ combine them with *numbers* to repeat the command multiple times by prefixing a 
 - `number` or `nu` option can add a line number before a line. Usage:   
     `:set number`, `:set nu`, `:set nonumber`
 
-[Back to Contents](../Contents.md)
+[Previous](Chapter-1.md) | [Contents](../Contents.md) | [Next](./Chapter-3.md)
