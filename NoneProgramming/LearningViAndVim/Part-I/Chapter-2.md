@@ -10,8 +10,8 @@
 | G                | Goes to last line     | gg               | go to the first line  |
 | 0 (zero)         | beginning of the line | $                | end of the line       |
 
-You can combine commands with *numbers* to repeate command *number* of times. For example,
-if you type `5j`, the cursor will move five lines down.
+You can combine commands with *numbers* to repeate command *number* of times.
+For example, if you type `5j`, the cursor will move five lines down.
 ## 2.2 Simple edits
 - `i`: insert text before the cursor  
     `I`: Insert text before the first character of the current line  
@@ -31,14 +31,15 @@ if you type `5j`, the cursor will move five lines down.
     `R`: Replace text, start from the current character
 - `p`: put the deleted or yanked text after the cursor,   
     `P`: Put the deleted or yanked text before the cursor  
-    *if the text is an entire line, put the text under (or above) the current line, no*
-    *matter the column of the cursor*
+    *if the text is an entire line, put the text under (or above) the current
+    line, no matter the column of the cursor*
 - `y`: yank (copy) text  
     `Y`: yank the current line  
     `yy`: equal to `Y`
-- `~`: change case, for example, change capital letter to lower case letter, vice versa.
-- `u`: undo. **vi** can only undo the last command, while *Vim* can undo infinite number
-    of previous commands  
+- `~`: change case, for example, change capital letter to lower case letter,
+  vice versa.
+- `u`: undo. **vi** can only undo the last command, while *Vim* can undo
+  infinite number of previous commands  
     `U`: Undo changes made to the current line
 - `o`: open a new line beneath the current line and starts *insert* mode  
     `O`: Open a new line above the current line and starts *insert* mode
@@ -50,24 +51,27 @@ if you type `5j`, the cursor will move five lines down.
 
 In *Vim*, you can redo the undos with `CTRL-R`.
 
-Except for `o` and `O`, the *insert* commands listed above can take *numeric* prefixes.
+Except for `o` and `O`, the *insert* commands listed above can take *numeric*
+prefixes.
 
 Some *number*, *command* combinations you may not expect:  
 - `3i*`: insert three asterisks (`***`)
 - `5A-`: Append 5 hyphens (`-----`) at the end of the line
-- `4r=`: replace 4 characters, starts from the current one, with 4 equal signs (`====`)
+- `4r=`: replace 4 characters, starts from the current one, with 4 equal signs
+  (`====`)
 ## 2.3 General form of *vi* commands
 *vi* and *Vim* commands consists of three parts:  
 *\[command\]\[number\]\<text object\>* or *\[number\]\[command\]\<text object\>*
 
-*command* and *number* are optional, without them, you are just moving around in the file
-by *text object*.
+*command* and *number* are optional, without them, you are just moving around in
+the file by *text object*.
 
-Some *commands* don't require *text object*. For example, `r`, `i`, `~`, etc. But you can
-combine them with *numbers* to repeat the command multiple times by prefixing a *number*.
+Some *commands* don't require *text object*. For example, `r`, `i`, `~`, etc.
+But you can combine them with *numbers* to repeat the command multiple times by
+prefixing a *number*.
 ## Settings
-- `wrapmargin` or `wm` option can automatically wrap a line when its length reaches the
-    value you specified.Usage:  
+- `wrapmargin` or `wm` option can automatically wrap a line when its length
+  reaches the value you specified.Usage:  
     `:set wm=100`, `:set nowm`, `:set nowrapmargin`
 - `number` or `nu` option can add a line number before a line. Usage:   
     `:set number`, `:set nu`, `:set nonumber`

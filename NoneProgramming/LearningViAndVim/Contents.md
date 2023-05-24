@@ -10,3 +10,5 @@
     - [Chapter 7 Advanced Editing](./Part-I/Chapter-7.md)
 - Part II Vim
     - [Chapter 8 Overview and Improvements over vi](./Part-II/Chapter-8.md)
+    - [Chapter 9 Graphical Vim (gvim)](./Part-II/Chapter-9.md)
+    - [Chapter 10 Multiple Windows in Vim](./Part-II/Chapter-10.md)

@@ -60,7 +60,9 @@ Following are two horizontal split commands without vertical sibling:
 :sfind [++opt] [+cmd] filename
 ```
 
-[Previous](./Chapter-9.md) | [Contents](../Contents.md) | [Next](./Chapter-11.md)
-```
-:set textwidth=90
-```
+## 10.3 Moving Around Windows
+- `CTRL-W``CTRL-W`: Cycle through all the windows.
+
+
+[Previous](./Chapter-9.md) | [Contents](../Contents.md) |
+[Next](./Chapter-11.md)
