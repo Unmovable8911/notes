@@ -62,7 +62,22 @@ Following are two horizontal split commands without vertical sibling:
 
 ## 10.3 Moving Around Windows
 - `CTRL-W``CTRL-W`: Cycle through all the windows.
+- `CTRL-W``j`: Move to the window below the current one.
+- `CTRL-W``k`: Move to the window above the current one.
+- `CTRL-W``h`: Move to the left window.
+- `CTRL-W``l`: Move to the right window.
+- `CTRL-W``t`: Move to the top left window.
+- `CTRL-W``b`: Move to the bottom right window.
+- `CTRL-W``p`: Move to the previous accessed window.
 
+## 10.4 Moving Windows Around
+There are two ways to change the disposition of windows:
+- Swaping windows.
+- Change the actual window layout.
+
+### Rotate or Exchange
+This approch **only** operate on the row or column in which the current window
+lives.
 
 [Previous](./Chapter-9.md) | [Contents](../Contents.md) |
 [Next](./Chapter-11.md)
