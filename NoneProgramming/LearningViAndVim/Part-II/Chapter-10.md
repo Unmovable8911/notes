@@ -77,7 +77,95 @@ There are two ways to change the disposition of windows:
 
 ### Rotate or Exchange
 This approch **only** operate on the row or column in which the current window
-lives.
+lives. The following diagram is a demonstration of *rotate* command:
+![diagram 10-4](./10-4.png)
+
+`[n]` `CTRL-w` `x` exchanges two windows in a row or column, the optional *n*
+makes Vim to exchange the current window with the *n*th next window.
+
+### Moving Windows and Changing Their Layout
+- `CTRL-w` `SHIFT-k`: Move the current window to the top.
+- `CTRL-w` `SHIFT-j`: Move the current window to the bottom.
+- `CTRL-w` `SHIFT-h`: Move the current window to the left most of the screen.
+- `CTRL-w` `SHIFT-l`: Move the current window to the right most of the screen.
+- `CTRL-w` `SHIFT-t`: Move the current window to a new tab.
+
+## 10.5 Resizing Windows
+Window resizing commands:
+- `CTRL-w` `=`: Try to resize all windows to equal size.
+- `CTRL-w` `-` or `:resize -1`: Decrease the current window height by 1 line.
+- `CTRL-w` `+` or `:resize +1`: Increase the current window height by 1 line.
+- `CTRL-w` `<` or `:vertical resize -1`: Shrink the current window width by one
+  column.
+- `CTRL-w` `>` or `:vertical resize +1`: Expand the current window width by one
+  column.
+- `zn` or `:resize n`: Set the height of the current window to *n* lines.
+
+`winminwidth` and `winminheight` decides the minimal width and height of
+windows, respectively. This is a strict value, windows will never be allowed to
+get smaller than these values.
+
+Key mapping tips:
+```
+map _ :resize -1<cr>
+map + :resize +1<cr>
+map <Backspace> :vertical resize -1<cr>
+map <Space> :vertical resize +1<cr>
+```
+
+## 10.6 Buffers and Their Interaction With Windows
+The following 3 commands can be used to list all the buffers in the current Vim
+session: `:ls`, `:files`, and `:buffers`. Appending a exclamation point to these
+commands causes Vim to show additional informantion of buffers.
+
+Status flags describing buffers:
+- *u*: Unlisted buffers, these buffers is not listed unless you use the `!`
+  modifier.
+- *%* or *#*: The current and alternate buffer.
+- *-* or *=*: Read-only and unmodifiable (meaning you cannot save the buffer
+  even when you use a !), respectively.
+- *+* or *x*: *+* indicates a modified buffer, and *x* is a buffer with read
+  errors.
+
+The hidden buffers are the ones not displayed in any window.
+
+Buffer commands
+- `:windo cmd`: Execute *cmd* on all visible windows in the current tab. Stops at
+  any window where *cmd* generates an error. *cmd* is not allowed to delete,
+  add, or change the order of the windows.
+- `:bufdo cmd`: execute *cmd* on all buffers, and stops at the first buffer
+  where *cmd* encounters an error.
+- `:badd file`: Add file to buffer list.
+- `bunload[!] [n]`: Unload the current buffer from the memory. The ! modifier
+  forces a modified buffer to be unloaded without being saved. Unload buffer *n*
+  if *n* is provided.
+- `:bdelete[!] [n]`: Does the same thing as `:bunload`, but also delete the
+  buffer from list.
+- `:buffer n`: Move to buffer *n*.
+- `:sbuffer n`: Opens a new window for buffer *n*.
+
+## 10.7 Playing Tag With Windows
+- `:stag[!] tag`: Splits the window to display the location for the *tag* found.
+
+???
+
+## 10.8 Tabbed Editing
+- `:tabnew file` or `tabedit file`: Open a new tab for *file*. If *file* is
+  omitted, Vim opens a tab with an empty buffer.
+- `:tabclose[!] [n]`: Close the current tab or *n*th tab is *n* is provided.
+- `:tabonly[!] [n]`: Keep the current tab or the *n*th tab (if *n* is provided)
+  and close all the other tabs.
+- `:tabprevious [n]` and `tabNext [n]`: Move to the previous tab or *n*th
+  previous tab.
+- `:tabnext [n]`: Next tab, compare to `:tabprevious`.
+- `:tabfirst`: First tab.
+- `:tabmove [+][-][n]`: Move the current tab.  
+  If all the optional parameters are absent, Vim move the current tab to last.  
+  If *n* is provided without *+* or *-*, Vim moves the current tab after the
+  *n*th tab. If *n* equal to 0, move to left most.  
+  If *n* is provided with a *+* or *-*, Vim moves the current tab to *n* of tabs
+  left or right, respectively.
+
 
 [Previous](./Chapter-9.md) | [Contents](../Contents.md) |
 [Next](./Chapter-11.md)
