@@ -48,5 +48,4 @@ as a continuation:
 2. The line before or after a `++` or `--`.
 3. The line following a `=>` as the prameter of a function.
 
-| [Previous](Chapter-1.md) |[Contents](./Contents.md) | [Next](./Chapter-3.md) |
-| --- | --- | --- |
+[Previous](Chapter-1.md) |[Contents](./Contents.md) | [Next](./Chapter-3.md)

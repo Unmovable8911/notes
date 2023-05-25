@@ -56,5 +56,4 @@ example();
 It's generally recommended to use `let` and `const` instead of `var` in modern
 JavaScript code.
 
-| [Contents](./Contents.md) | [Next](./Chapter-2.md) |
-| --- | --- |
+[Contents](./Contents.md) | [Next](./Chapter-2.md)

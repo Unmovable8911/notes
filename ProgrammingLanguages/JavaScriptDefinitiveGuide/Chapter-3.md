@@ -186,8 +186,7 @@ line"
 is included literally in this string`
 ```
 
-| [Previous](Chapter-2.md) |[Contents](./Contents.md) | [Next](./Chapter-4.md) |
-| --- | --- | --- |
+[Previous](Chapter-2.md) |[Contents](./Contents.md) | [Next](./Chapter-4.md)
 ```
 :so ~/Documents/exrc/js_exrc
 ```
