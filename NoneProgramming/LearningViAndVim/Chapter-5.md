@@ -134,4 +134,4 @@ used with *ex*'s line\-addressing capability and named registers.
 - `:160,224ya a`: yanks line 160 through line 224 into register `a`
 - `:pu a`: put register `a` after current line
 
-[Previous](Chapter-4.md) | [Contents](../Contents.md) | [Next](./Chapter-6.md)
+[Previous](Chapter-4.md) | [Contents](Contents.md) | [Next](Chapter-6.md)

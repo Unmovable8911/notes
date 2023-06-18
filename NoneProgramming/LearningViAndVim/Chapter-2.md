@@ -76,4 +76,4 @@ prefixing a *number*.
 - `number` or `nu` option can add a line number before a line. Usage:   
     `:set number`, `:set nu`, `:set nonumber`
 
-[Previous](Chapter-1.md) | [Contents](../Contents.md) | [Next](./Chapter-3.md)
+[Previous](Chapter-1.md) | [Contents](Contents.md) | [Next](Chapter-3.md)

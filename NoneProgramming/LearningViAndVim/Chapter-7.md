@@ -246,15 +246,15 @@ Quoting the expansion of the `file` variable ($file) allows the script to work
 event when the filename have spaces in their names.
 
 ```shell
-" Assign variable to a, b, c, and d.
+# Assign variable to a, b, c, and d.
 for variable in a b c d
 
-" Assign variable in turn to the name of each file in which grep finds the
-" string Alcuin.  -l prints the filenames whose contents match the pattern,
-" without printing the actual matching lines.
-for variable in $(grep -l "Alcuin" *)
+# Assign variable in turn to the name of each file in which grep finds the
+# string Alcuin.  -l prints the filenames whose contents match the pattern,
+# without printing the actual matching lines.
+for variable in $(grep -l #Alcuin" *)
 
-" equal to for variable in "$@"
+# equal to for variable in "$@"
 for variable
 ```
 
@@ -339,5 +339,4 @@ In *Vim*, each time you look up for a idertifier using `:tag` or `CTRL-]`, the
 editor saves the current location before searching for the *tag*, you may then
 return to a saved location using `CTRL-T`.
 
-[Previous](Chapter-6.md) | [Contents](../Contents.md) |
-[Next](../Part-II/Chapter-8.md)
+[Previous](Chapter-6.md) | [Contents](Contents.md) | [Next](Chapter-8.md)

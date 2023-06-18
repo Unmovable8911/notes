@@ -6,4 +6,4 @@
 - `vim file` or `vi file`: opens a file
 - `:q`; `:wq`/`ZZ`; `:q!`: quit; save and quit; quit without saving
 
-[Contents](,,/Contents.md) | [Next](./Chapter-2.md)
+[Contents](Contents.md) | [Next](Chapter-2.md)

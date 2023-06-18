@@ -73,4 +73,4 @@ gvim stores menu definitions in a file named `$VIMRUNTIME/menu.vim`.
 :amenu File.HTML :set filetype
 ```
 
-[Previous](./Chapter-8.md) | [Contents](../Contents.md) | [Next](./Chapter-10.md)
+[Previous](Chapter-8.md) | [Contents](Contents.md) | [Next](Chapter-10.md)

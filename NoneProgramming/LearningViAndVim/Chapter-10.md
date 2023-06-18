@@ -78,7 +78,7 @@ There are two ways to change the disposition of windows:
 ### Rotate or Exchange
 This approch **only** operate on the row or column in which the current window
 lives. The following diagram is a demonstration of *rotate* command:
-![diagram 10-4](./10-4.png)
+![diagram 10-4](../../.static/NoneProgramming/LearningViAndVim/10-4.png)
 
 `[n] CTRL-W x` exchanges two windows in a row or column, the optional *n*
 makes Vim to exchange the current window with the *n*th next window.
@@ -193,5 +193,4 @@ Buffer commands
 - `:hide [n]`: Quits the current window or window *n* and hides the buffer if no
   other window references it.
 
-[Previous](./Chapter-9.md) | [Contents](../Contents.md) |
-[Next](./Chapter-11.md)
+[Previous](Chapter-9.md) | [Contents](Contents.md) | [Next](Chapter-11.md)

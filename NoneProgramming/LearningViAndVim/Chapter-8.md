@@ -130,5 +130,4 @@ When all possible undos are undone, Vim resets the file's *modified* status.
 whether lines wrap or disappear off the edge of the screen. Thus, to get side
 scrolling, you'd use `:set nowrap` and give `sidescroll` a reasonable value.
 
-[Previous](../Part-I/Chapter-7.md) | [Contents](../Contents.md) |
-[Next](./Chapter-9.md)
+[Previous](Chapter-7.md) | [Contents](Contents.md) | [Next](Chapter-9.md)

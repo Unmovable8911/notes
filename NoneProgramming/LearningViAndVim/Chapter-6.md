@@ -240,4 +240,4 @@ For *Part 2*, copy all the first lines of each chapter to a file named *begain*,
 and then copy all the titles of each chapter and append them to the end of the
 current file. 
 
-[Previous](Chapter-5.md) | [Contents](../Contents.md) | [Next](./Chapter-7.md)
+[Previous](Chapter-5.md) | [Contents](Contents.md) | [Next](Chapter-7.md)

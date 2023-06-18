@@ -95,4 +95,4 @@ where you started the search.
 `''` (a pair of apostrophes) works much like \`\`, except it returns the cursor
 to the beginning of the line.
 
-[Previous](Chapter-2.md) | [Contents](../Contents.md) | [Next](./Chapter-4.md)
+[Previous](Chapter-2.md) | [Contents](Contents.md) | [Next](Chapter-4.md)

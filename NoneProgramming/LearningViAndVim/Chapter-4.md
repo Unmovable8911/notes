@@ -81,4 +81,4 @@ The *numbered* and *named* registers are shared within the same *Vim* session.
 Place markers are set only during the current session, they are not stored in
 the file.
 
-[Previous](Chapter-3.md) | [Contents](../Contents.md) | [Next](./Chapter-5.md)
+[Previous](Chapter-3.md) | [Contents](Contents.md) | [Next](Chapter-5.md)
