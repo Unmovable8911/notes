@@ -1,5 +1,6 @@
 # Programming Languages
 - [Django For Beginners](./ProgrammingLanguages/DjangoForBeginners.md)
+- [Django For Professionals](./ProgrammingLanguages/DjangoForProfessionals.md)
 - [Head First HTML5](./ProgrammingLanguages/HeadFirstHTML5.md)
 - [The JavaScript Definitive Guide](./ProgrammingLanguages/JavaScriptDefinitiveGuide/Contents.md)
 # None Programming
