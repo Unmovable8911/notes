@@ -374,3 +374,160 @@ TIME_ZONE = "America/New_York"
 - To access the model objects connected to the object using ForeignKeys, use the
   notation as `\L<model>_set`. For example, `article.comment_set.all` gets all
   the comments attached to article
+
+# Deployment
+Deployment Checklist:
+- Install Gunicorn, the server for production
+- Set `DEBUG` to `False`, environment variable set to `True`
+- Set `SECRET_KEY` in `.env` file
+- Set `DATABASES` to use SQLite locally and PostgreSQL in production
+- Set `ALLOWED_HOSTS` in `settings.py`
+- Install `WhiteNoise` and Collect static files
+- Create `.gitignore` file and add files and directories that should be ignored
+- Create `requirements.txt` file
+- Create `Procfile`
+- Create `runtime.txt` file
+- *+++++Split+++++*
+- Start an APP on Heroku
+- Creat a PostgreSQL on Heroku
+- Add `SECRET_KEY`
+- Push the project to Heroku
+- Start server
+## Gunicorn
+Gunicorn is a production-ready web server.
+
+## `requirements.txt`
+This file contains all the Python dependencies of the project.
+```bash
+(.venv) $ pip freeze > requirements.txt
+```
+
+## Set `DEBUG`
+Install `environs` package
+```bash
+pip install environs[django]
+```
+
+Create `.env` file
+```
+DEBUG = True
+```
+
+Settings
+```python
+# settings.py
+from pathlib import Path
+from environs import Env
+
+env = Env()
+env.read_env()
+DEBUG = env.bool("DEBUG", default=False)
+```
+
+## Set `SECRET_KEY`
+Generate a secret key
+```bash
+(.venv) $ python -c "import secrets; print(secrets.token_urlsafe())"
+```
+
+`.env` file
+```
+SECRET_KEY = "generated-secret-key"
+```
+
+Settings
+```python
+SECRET_KEY = env.str("SECRET_KEY")
+```
+
+## Set `DATABASES`
+Install Psycopg, the database adapter
+```bash
+(.venv) $ pip install psycopg2
+```
+
+`.env` file
+```
+DATABASE_URL=sqlite:///db.sqlite3
+```
+
+Settings
+```python
+DATABASES = {
+    "default": env.dj_db_url("DATABASE_URL")
+}
+```
+
+Currently, the project is using SQLite as the local database, but it's better to
+use PostgreSQL both in production and locally to avoid bugs.
+
+## Set `ALLOWED_HOSTS`
+`ALLOWED_HOSTS` represents the host/domain names the project site can serve.
+This is a security measure to prevent HTTP Host header attacks.
+```python
+ALLOWED_HOSTS = ["127.0.0.1/", "localhost/", ".heroku.com/"]
+```
+
+## `Procfile`
+`Procfile` is specific to Heroku and provide instructions on how to run the
+application in their stack. This file is located at the root directory of the
+project.
+
+*Procfile*
+```
+web: gunicorn django_project.wsgi --log-file -
+```
+
+This line of text is indicating that for `web` function use `gunicorn` as the
+server, the WSGI file located at `django_project.wsgi`, and `--log-file -` makes
+any logging messages visible to us.
+
+## `runtime.txt`
+Specifies which Python version should run on Heroku. This file is located at the
+root directory of the project.
+
+```bash
+$ python --version
+Python 3.10.2
+```
+
+*runtime.txt*
+```
+python-3.10.2
+```
+
+## *+++++Split+++++*
+
+## Start an APP on Heroku
+```bash
+(.venv) $ heroku create
+```
+
+This command will start a new APP on Heroku and create a git remote repository
+on the project.
+
+## Create a PostgreSQL database on Heroku
+```bash
+(.venv) $ heroku addons:create heroku-postgresql:hobby-dev -a dfb-news
+```
+
+## Add `SECRET_KEY`
+```bash
+(.venv) $ heroku config:set SECRET_KEY="your-secret-key-in-.env-file"
+```
+
+## Push the project to the Heroku server
+```bash
+(.venv) $ git push heroku main
+```
+
+Initiate the production database
+```bash
+(.venv) $ heroku run python manage.py migrate
+(.venv) $ heroku run python manage.py createsuperuser
+```
+
+## Start the server
+```bash
+(.venv) $ heroku ps:scale web=1
+```

@@ -1,11 +1,17 @@
 # How Markdown works
-When talking about *how Markdown works*, we are actually talking about how Markdown applications work. Well, it mainly consists of three steps, **Markdown Document** => **Markdown application renders Markdown into HTML** => **Display the rendered HTML**. 
+When talking about *how Markdown works*, we are actually talking about how
+Markdown applications work. Well, it mainly consists of three steps, **Markdown
+Document** => **Markdown application renders Markdown into HTML** => **Display
+the rendered HTML**. 
 
-In this *Markdown* guide, we are focusing on the first step, the remaining two steps are not something we really need to think about when writing a *Markdown* document.
+In this *Markdown* guide, we are focusing on the first step, the remaining two
+steps are not something we really need to think about when writing a *Markdown*
+document.
 
 ---
 # 1 Basic syntax
-Basic syntax are supported on almost all *Markdown* applications. And of course, *Markdown* would be useless if you don't even know these basic syntax.
+Basic syntax are supported on almost all *Markdown* applications. And of course,
+*Markdown* would be useless if you don't even know these basic syntax.
 ## 1.1 Headings
 ```
 # Heading 1
@@ -14,7 +20,8 @@ Basic syntax are supported on almost all *Markdown* applications. And of course,
 ###### Heading 6
 ```
 
-Alternatively, on the line below the text, add any number of `==` characters for **Heading 1** or `--` for **Heading 2**
+Alternatively, on the line below the text, add any number of `==` characters for
+**Heading 1** or `--` for **Heading 2**
 ## 1.2 Paragraphs
 ```
 Paragraphs doesn't need any hint to start with.
@@ -55,12 +62,15 @@ Result:
 > Paragraphs following a '>' is a blockquote
 ```
 
-This is the very basic usage of blockquotes, only one paragraph. You can also use *blockquotes* with **multiple paragraphs**, **other elements**, and **nested blockquotes**, which are illastrated below
+This is the very basic usage of blockquotes, only one paragraph. You can also
+use *blockquotes* with **multiple paragraphs**, **other elements**, and **nested
+blockquotes**, which are illastrated below
 
 ```
 > The fist paragraph
 > 
-> The second paragraph. See? Two paragraphs are seprated by a "blank blockquote", but still, they are both in the same blockquote
+> The second paragraph. See? Two paragraphs are seprated by a "blank
+> blockquote", but still, they are both in the same blockquote
 >
 > ### A heading in a blockquote
 >
@@ -73,7 +83,8 @@ This is the very basic usage of blockquotes, only one paragraph. You can also us
 It will look like this:
 > The fist paragraph
 > 
-> The second paragraph. See? Two paragraphs are seprated by a "blank blockquote", but still, they are both in the same blockquote
+> The second paragraph. See? Two paragraphs are seprated by a "blank
+> blockquote", but still, they are both in the same blockquote
 >
 > ### A heading in a blockquote
 >
@@ -114,7 +125,8 @@ Result:
 > + Or a '+'
 > - And the result view are the same
 
-***NOTE*** | In some Markdown applications, unordered list items starting with a '\*' or '\+' has wider line height.
+***NOTE*** | In some Markdown applications, unordered list items starting with a
+'\*' or '\+' has wider line height.
 ### 1.5.3 Nested lists
 ```
 1. First item
@@ -156,9 +168,11 @@ You can use single tick mark (\`) to *enclose* inline code.
 
 And you can indent text with **4 spaces** or **1 tab** to indicate it's a *code block*.
 
-Or, you can also *enclose* block code with treble tick marks (\`\`\`), *But this is an extended syntax feature which I will explain later*
+Or, you can also *enclose* block code with treble tick marks (\`\`\`), *But this
+is an extended syntax feature which I will explain later*
 
-If you want to escape tick marks in your word or phrase, *enclose* the word or phrase in double tick marks (\`\`).
+If you want to escape tick marks in your word or phrase, *enclose* the word or
+phrase in double tick marks (\`\`).
 ## 1.7 Horizontal rules
 Horizontal rules are horizontal lines split the content of a document.
 ```
@@ -276,7 +290,8 @@ Here's a simple footnote[^1], and here's a longer one[^another].
 [^1]: This is the first footnote.
 [^another]: Here's another footnote
 ```
-You can put your footnotes anywhere in the file, and the result is that the footnotes will always appears at the end of the document.
+You can put your footnotes anywhere in the file, and the result is that the
+footnotes will always appears at the end of the document.
 
 Result:
 > Here's a simple footnote[^1], and here's another one[^bignote].
@@ -290,7 +305,9 @@ The world is ~~flat~~ round.
 Result:
 > The world is ~~flat~~ round.
 ## 2.5 Automatic URL linking
-Many markdown processors automatically turn URLs into links, although didn't enclose them in parentheses. If you don't want your URLs automatically render to links, you can render them as inline code.
+Many markdown processors automatically turn URLs into links, although didn't
+enclose them in parentheses. If you don't want your URLs automatically render to
+links, you can render them as inline code.
 ## 2.6 Heading IDs
 ```
 ### Great Heading {#great-heading}
